@@ -1,5 +1,6 @@
 package com.app.sistema_de_controle_de_estoque.service;
 
+import com.app.sistema_de_controle_de_estoque.model.DTO.ProdutoDTO;
 import com.app.sistema_de_controle_de_estoque.model.Produto;
 import com.app.sistema_de_controle_de_estoque.repository.ProdutoRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -15,12 +16,13 @@ public class ProdutoService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+    private Produto produto;
 
     public List<Produto> todosProdutos() {
         return  produtoRepository.findAll();
     }
 
-    public String cadastroNovoProduto(Produto novoProduto) {
+    public String cadastroNovoProduto(ProdutoDTO novoProduto) {
 
         if (novoProduto == null || novoProduto.getNome() == null
                 || novoProduto.getPreco() <= 0 || novoProduto.getQuantidade() <= 0) {
@@ -31,9 +33,12 @@ public class ProdutoService {
             return "Produto já existe";
         }
 
-        produtoRepository.save(novoProduto);
-        return "Novo Produto cadastrado com Sucesso";
+        produto.setNome(novoProduto.getNome());
+        produto.setPreco(novoProduto.getPreco());
+        produto.setQuantidade(novoProduto.getQuantidade());
 
+        produtoRepository.save(produto);
+        return "Novo Produto cadastrado com Sucesso";
 
     }
 
@@ -53,9 +58,10 @@ public class ProdutoService {
         return produtoRepository.findByNome(nome);
     }
 
-    public String atualizarProduto(Long id, Produto atualizado) {
+    public String atualizarProduto(Long id, ProdutoDTO atualizado) {
 
         return produtoRepository.findById(id).map(produto -> {
+
             produto.setNome(atualizado.getNome());
             produto.setPreco(atualizado.getPreco());
             produto.setQuantidade(atualizado.getQuantidade());
@@ -65,7 +71,11 @@ public class ProdutoService {
 
         }).orElseGet(() -> {
 
-            produtoRepository.save(atualizado);
+            produto.setQuantidade(atualizado.getQuantidade());
+            produto.setNome(atualizado.getNome());
+            produto.setPreco(atualizado.getPreco());
+
+            produtoRepository.save(produto);
             return "Produto não existia, foi adicionado à base de dados";
 
         });

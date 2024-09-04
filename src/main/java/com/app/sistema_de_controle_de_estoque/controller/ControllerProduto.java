@@ -1,5 +1,6 @@
 package com.app.sistema_de_controle_de_estoque.controller;
 
+import com.app.sistema_de_controle_de_estoque.model.DTO.ProdutoDTO;
 import com.app.sistema_de_controle_de_estoque.model.Produto;
 import com.app.sistema_de_controle_de_estoque.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,8 @@ public class ControllerProduto {
 
     //Adicionar novo produto
     @PostMapping("/adicionar")
-    public ResponseEntity<String> adicionar(@RequestBody Produto novoProduto){
+    public ResponseEntity<String> adicionar(@RequestBody ProdutoDTO novoProduto){
+
         String produto =  produtoService.cadastroNovoProduto(novoProduto);
         return new ResponseEntity<>(produto, HttpStatus.OK);
     }
@@ -44,7 +46,7 @@ public class ControllerProduto {
 
     //Atualizar Produto
     @PutMapping("/atualizar/{nome}")
-    public ResponseEntity<String> atualizarProduto(@PathVariable String nome, @RequestBody Produto atualizado) {
+    public ResponseEntity<String> atualizarProduto(@PathVariable String nome, @RequestBody ProdutoDTO atualizado) {
 
         Optional<Produto> produtoOpt = produtoService.buscaProdutoPorNome(nome);
 
