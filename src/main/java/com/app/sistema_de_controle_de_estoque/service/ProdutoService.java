@@ -16,13 +16,15 @@ public class ProdutoService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
-    private Produto produto;
+
+    private Produto produto = new Produto();
 
     public List<Produto> todosProdutos() {
         return  produtoRepository.findAll();
     }
 
     public String cadastroNovoProduto(ProdutoDTO novoProduto) {
+
 
         if (novoProduto == null || novoProduto.getNome() == null
                 || novoProduto.getPreco() <= 0 || novoProduto.getQuantidade() <= 0) {
@@ -32,10 +34,10 @@ public class ProdutoService {
         if (produtoRepository.existsByNome(novoProduto.getNome())){
             return "Produto já existe";
         }
-
         produto.setNome(novoProduto.getNome());
         produto.setPreco(novoProduto.getPreco());
         produto.setQuantidade(novoProduto.getQuantidade());
+
 
         produtoRepository.save(produto);
         return "Novo Produto cadastrado com Sucesso";
