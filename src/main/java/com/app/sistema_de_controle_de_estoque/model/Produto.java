@@ -23,5 +23,8 @@ public class Produto {
     private String nome;
     private int quantidade;
     private Double preco;
+    private String categoria;
+    private String descricao;
+
 
 }
