@@ -1,6 +1,6 @@
 package com.app.sistema_de_controle_de_estoque.service;
 
-import com.app.sistema_de_controle_de_estoque.model.DTO.ProdutoDTO;
+import com.app.sistema_de_controle_de_estoque.DTO.produto.ProdutoDTO;
 import com.app.sistema_de_controle_de_estoque.model.Produto;
 import com.app.sistema_de_controle_de_estoque.repository.ProdutoRepository;
 import jakarta.persistence.EntityNotFoundException;

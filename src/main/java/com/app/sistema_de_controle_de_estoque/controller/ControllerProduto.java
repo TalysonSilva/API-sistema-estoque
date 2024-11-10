@@ -1,6 +1,6 @@
 package com.app.sistema_de_controle_de_estoque.controller;
 
-import com.app.sistema_de_controle_de_estoque.model.DTO.ProdutoDTO;
+import com.app.sistema_de_controle_de_estoque.DTO.produto.ProdutoDTO;
 import com.app.sistema_de_controle_de_estoque.model.Produto;
 import com.app.sistema_de_controle_de_estoque.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.app.sistema_de_controle_de_estoque.model.DTO;
+package com.app.sistema_de_controle_de_estoque.DTO.produto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
