@@ -13,10 +13,10 @@ Desenvolvido utilizando java , Spring boot e arquitetura RESTful em conjunto com
 - Lista de produtos
 - Remover produto
 - Atualizar o produto
+- Autenticação JWT
 
 ## Melhorias Futuras
 
-- Autenticação JWT
 - Adicionar Testes JUnit 
 
 
